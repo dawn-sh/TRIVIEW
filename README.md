@@ -88,7 +88,8 @@
 ## 🎥 구현 영상
 <br>
 
-<img src="" width=""> 자기 영상 넣어주시고 width 값 조정해주세요
+- 예약결제창 유효성 및 쿠폰 포인트 적용
+https://github.com/dawn-sh/sist_FinalProject/assets/111737185/8aedb607-1d80-4e21-81ca-8cb30783b46c
 
 </div>
 
