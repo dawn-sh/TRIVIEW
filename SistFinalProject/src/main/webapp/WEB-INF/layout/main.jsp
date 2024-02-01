@@ -28,6 +28,11 @@
             margin-bottom: 50px;
         }
 
+        .mainad img{
+            width: 100%;
+            box-shadow: 10px 10px 10px silver;
+        }
+
         .maincategory {
             width: 100%;
             /*height: 20vh;*/
@@ -151,7 +156,9 @@
 <div class="mainbox" align="center">
 
     <div class="mainad">
-        <img src="${root}/seoul.png" style="width: 100%; box-shadow: 10px 10px 10px silver;">
+        <img src="${root}/seoul.png" class="slide" >
+        <img src="${root}/seoul.png" class="slide" >
+        <img src="${root}/seoul.png" class="slide" >
     </div>
 
     ${sessionScope.nickname}<br>
