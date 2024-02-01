@@ -23,14 +23,35 @@
 
         .mainad {
             width: 100%;
-            /*height: 65vh;*/
+            height: 40vw;
             /*border: 3px solid orange;*/
-            margin-bottom: 50px;
+            margin-bottom: 30px;
+            box-shadow: 10px 10px 10px silver;
+            overflow: hidden;
         }
 
         .mainad img{
             width: 100%;
-            box-shadow: 10px 10px 10px silver;
+            height: 100%;
+            overflow: hidden;
+            display: none;
+        }
+        .dot-container {
+            text-align: center;
+            /*padding: 20px;*/
+            /*background: #ddd;*/
+        }
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active{
+            background-color: #717171;
         }
 
         .maincategory {
@@ -156,10 +177,20 @@
 <div class="mainbox" align="center">
 
     <div class="mainad">
-        <img src="${root}/seoul.png" class="slide" >
-        <img src="${root}/seoul.png" class="slide" >
-        <img src="${root}/seoul.png" class="slide" >
+        <img src="${root}/zchuseok.jpeg" class="slide">
+        <img src="${root}/seoul.png" class="slide">
+        <img src="${root}/zdajeon.jpeg" class="slide" >
+        <img src="${root}/zjune.jpeg" class="slide" >
+        <img src="${root}/ztkka.jpeg" class="slide" >
     </div>
+    <div class="dot-container">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
 
     ${sessionScope.nickname}<br>
     <div class="maincategory d-inline-flex">
@@ -206,13 +237,12 @@
                         </div>
 
                 </li>
-                
-                
             </ul>
         </div>
     </div>
 	<script>
     $(document).ready(function() {
+
         // business_id 값을 가져옴
         var businessId = "${sessionScope.business_id}";
 
@@ -229,6 +259,30 @@
                 window.location.href = "/accom/accom-insert";
             }
         });
+
+    //     main 광고 slide
+        var slideIndex=0;
+        showSlides();
+
+        function showSlides(){
+            var i=0;
+            var slides=document.getElementsByClassName("slide");
+            var dots=document.getElementsByClassName("dot");
+            for (i=0;i<slides.length;i++){
+                slides[i].style.display="none";
+            }
+            slideIndex++;
+            if (slideIndex>slides.length){
+                slideIndex=1;
+            }
+            for (i=0;i<dots.length;i++){
+                dots[i].className=dots[i].className.replace(" active","");
+            }
+            slides[slideIndex-1].style.display="block";
+            dots[slideIndex-1].className+=" active";
+            setTimeout(showSlides,2000)// Change image every 2 seconds
+        }
+
     });
 </script>
 	
