@@ -142,6 +142,7 @@ public class ChatController {
         return mv;
     }
 
+    // 단순히 room_num 을 이용해서 roomName 얻을려고 하는 거잖어?
     @GetMapping("/goChattingRoom")
 
     public String goChattingRoom(@RequestParam int room_num,
@@ -151,8 +152,8 @@ public class ChatController {
         model.addAttribute("room_num",room_num);
         model.addAttribute("roomName",roomName);
 
-//        System.out.println(room_num);
-//        System.out.println(roomName);
+        System.out.println(room_num);
+        System.out.println(roomName);
 
         return "/chat/chat";
     }
@@ -170,7 +171,7 @@ public class ChatController {
 
         // 사용자의 num 받기
         String info_id=(String)session.getAttribute("info_id");
-        String business_id=(String)session.getAttribute("business_id"); 
+        String business_id=(String)session.getAttribute("business_id");
         String myid=(String) session.getAttribute("myid");
         String sender_id=null;
 
@@ -270,10 +271,29 @@ public class ChatController {
         mv.addObject("chatRoomList",chatRoomList);
 //        mv.addObject("ChatRoomName",ChatRoomName);
 
-        mv.setViewName("/chat/room");
+        mv.setViewName("/chat/chat");
 
         return mv;
     }
+
+//    @GetMapping("/chatlist")
+//    public ModelAndView chatList(HttpSession session){
+//        ModelAndView mv=new ModelAndView();
+//        String receiver_id=(String) session.getAttribute("business_id");
+//
+//        List<ChatRoomDto> chatRoomList=roomMapperInter.getChatRoomListByReceiverId(receiver_id);
+//
+////        List<AccomDto> ChatRoomName=accomMapperInter.getAccomDataById(receiver_id);
+////        System.out.println(chatRoomList);
+//
+//
+//        mv.addObject("chatRoomList",chatRoomList);
+////        mv.addObject("ChatRoomName",ChatRoomName);
+//
+//        mv.setViewName("/chat/room");
+//
+//        return mv;
+//    }
 
 //    @PostMapping("/loginCheckForChat")
 //    public ModelAndView loginCheckForChat(HttpSession session,
