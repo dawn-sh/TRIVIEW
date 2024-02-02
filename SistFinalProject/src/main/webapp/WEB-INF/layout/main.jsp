@@ -179,9 +179,9 @@
     <div class="mainad">
         <img src="${root}/zchuseok.jpeg" class="slide">
         <img src="${root}/seoul.png" class="slide">
-        <img src="${root}/zdajeon.jpeg" class="slide" >
-        <img src="${root}/zjune.jpeg" class="slide" >
-        <img src="${root}/ztkka.jpeg" class="slide" >
+        <img src="${root}/zdajeon.jpeg" class="slide">
+        <img src="${root}/zjune.jpeg" class="slide">
+        <img src="${root}/ztkka.jpeg" class="slide">
     </div>
     <div class="dot-container">
         <span class="dot"></span>
@@ -261,27 +261,48 @@
         });
 
     //     main 광고 slide
-        var slideIndex=0;
+        var slideIndex = 0; // 슬라이드 인덱스를 전역 변수로 선언
         showSlides();
 
-        function showSlides(){
-            var i=0;
-            var slides=document.getElementsByClassName("slide");
-            var dots=document.getElementsByClassName("dot");
-            for (i=0;i<slides.length;i++){
-                slides[i].style.display="none";
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("slide");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
             }
             slideIndex++;
-            if (slideIndex>slides.length){
-                slideIndex=1;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
             }
-            for (i=0;i<dots.length;i++){
-                dots[i].className=dots[i].className.replace(" active","");
-            }
-            slides[slideIndex-1].style.display="block";
-            dots[slideIndex-1].className+=" active";
-            setTimeout(showSlides,2000)// Change image every 2 seconds
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 2000); // 2초마다 이미지 변경
         }
+
+        // dot 클릭 이벤트 리스너 추가
+        $(".dot").click(function() {
+            // 클릭된 dot의 인덱스를 구함
+            var dotIndex = $(".dot").index(this);
+
+            // 슬라이드 인덱스를 클릭된 dot에 맞게 조정
+            slideIndex = dotIndex; // 클릭 이벤트에 의해 슬라이드 인덱스를 직접 설정
+
+            // 현재 슬라이드와 dot를 즉시 업데이트
+            var slides = document.getElementsByClassName("slide");
+            var dots = document.getElementsByClassName("dot");
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex].style.display = "block";
+            dots[slideIndex].className += " active";
+
+            // 슬라이드 쇼를 다시 시작하기 위해 기존의 타이머를 취소하고 새로 시작
+            clearTimeout(showSlides);
+            // showSlides.timeoutId = setTimeout(showSlides, 2000); // 새로운 타이머 설정
+        });
 
     });
 </script>
