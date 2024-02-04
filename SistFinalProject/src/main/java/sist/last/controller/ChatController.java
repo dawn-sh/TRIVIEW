@@ -6,8 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import sist.last.chat.Room;
-import sist.last.dto.AccomDto;
 import sist.last.dto.ChatDto;
 import sist.last.dto.ChatRoomDto;
 import sist.last.mapper.AccomMapperInter;
@@ -20,7 +18,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Controller // 이 클래스가 Spring MVC의 컨트롤러 임을 나타내는 어노테이션이다.
 @RequestMapping("/chat") // 이 컨트롤러의 기본 URL 정보가 "/chat" 임을 지정합니다.
@@ -142,7 +139,6 @@ public class ChatController {
         return mv;
     }
 
-    // 단순히 room_num 을 이용해서 roomName 얻을려고 하는 거잖어?
     @GetMapping("/goChattingRoom")
 
     public String goChattingRoom(@RequestParam int room_num,
@@ -152,8 +148,8 @@ public class ChatController {
         model.addAttribute("room_num",room_num);
         model.addAttribute("roomName",roomName);
 
-        System.out.println(room_num);
-        System.out.println(roomName);
+//        System.out.println(room_num);
+//        System.out.println(roomName);
 
         return "/chat/chat";
     }
@@ -271,29 +267,10 @@ public class ChatController {
         mv.addObject("chatRoomList",chatRoomList);
 //        mv.addObject("ChatRoomName",ChatRoomName);
 
-        mv.setViewName("/chat/chat");
+        mv.setViewName("/chat/room");
 
         return mv;
     }
-
-//    @GetMapping("/chatlist")
-//    public ModelAndView chatList(HttpSession session){
-//        ModelAndView mv=new ModelAndView();
-//        String receiver_id=(String) session.getAttribute("business_id");
-//
-//        List<ChatRoomDto> chatRoomList=roomMapperInter.getChatRoomListByReceiverId(receiver_id);
-//
-////        List<AccomDto> ChatRoomName=accomMapperInter.getAccomDataById(receiver_id);
-////        System.out.println(chatRoomList);
-//
-//
-//        mv.addObject("chatRoomList",chatRoomList);
-////        mv.addObject("ChatRoomName",ChatRoomName);
-//
-//        mv.setViewName("/chat/room");
-//
-//        return mv;
-//    }
 
 //    @PostMapping("/loginCheckForChat")
 //    public ModelAndView loginCheckForChat(HttpSession session,
