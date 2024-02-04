@@ -53,10 +53,12 @@ button{
     width: 50px;
     font-size: 14px;
     color: white;
-    border: 1px solid gray;
-    border-radius: 20px;
+    border: none;
     padding: 3px;
     margin: 3px;
+}
+#goRoomBtn{
+    border-radius: 5px;
 }
 
 .inputTable th{
