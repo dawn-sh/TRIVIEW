@@ -167,7 +167,12 @@
         div.textbox {
             width: 100%;
             height: 100%;
-            margin-top: 12vh;
+            padding: 5px 5px 5px  5px;
+            display: flex; /* Flexbox를 활성화 */
+            flex-direction: column; /* 요소들을 수직 방향으로 배열 */
+            justify-content: center; /* 요소들을 가로 방향으로 가운데 정렬 */
+            align-items: center; /* 요소들을 세로 방향으로 가운데 정렬 */
+            text-align: center; /* 텍스트 가운데 정렬 */
         }
 
     </style>
@@ -278,7 +283,7 @@
             }
             slides[slideIndex-1].style.display = "block";
             dots[slideIndex-1].className += " active";
-            setTimeout(showSlides, 2000); // 2초마다 이미지 변경
+            setTimeout(showSlides, 3000); // 3초마다 이미지 변경
         }
 
         // dot 클릭 이벤트 리스너 추가

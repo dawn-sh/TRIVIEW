@@ -37,4 +37,6 @@ public class Room {
 //    System.out.println(chatRoom.toString());
 //    // 출력: Room [roomNumber=1, senderId=General Room]
     // 이 클래스는 객체 지향 프로그래밍의 원칙을 따라 작성되어 있으며, 채팅 어플리케이션에서 방 정보를 효과적으로 표현할 수 있도록 설계되었습니다.
+
+
 }

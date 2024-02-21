@@ -86,10 +86,12 @@
                     setTimeout(function (){
                         $(".chatlist").scrollTop($(".chatlist").prop('scrollHeight'));
                     },300)
+                    $("#chatShow").scrollTop($("#chatShow")[0].scrollHeight);
                 } else {
                     setTimeout(function (){
                         $(".chatlist").scrollTop(scrollPos);
                     },300)
+                    $("#chatShow").scrollTop($("#chatShow")[0].scrollHeight);
                 }
             }
         });
@@ -119,7 +121,8 @@
         // 채팅 입력창에서 엔터 누르면 채팅 보내짐
         $("#chatting").keyup(function (e){
            if(e.keyCode==13){
-               if ($("#chatting").val()!=''){
+               var msg=$.trim($("#chatting").val());
+               if (msg!=''){
                    send();
                }
            }
@@ -201,6 +204,7 @@
         $("#chatShow.chating").focus(getChatting(room_num));
         $("#chatting").val("");
 
+        $("#chatShow").scrollTop($("#chatShow")[0].scrollHeight); // 메시지를 보내고 나서 focus를 가장 아래로 보내기
     }
 
 </script>
