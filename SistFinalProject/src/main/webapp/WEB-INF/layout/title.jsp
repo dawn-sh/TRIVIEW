@@ -389,7 +389,6 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;<img alt="" src="../loginsave/t1.png" style="width:8px; height:8px;">
                     </li>
                 </c:if>
-
             </ul>
         </div>
         <div class="search-input-box">

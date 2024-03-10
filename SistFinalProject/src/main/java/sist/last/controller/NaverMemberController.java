@@ -23,8 +23,10 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.reactive.result.view.RedirectView;
@@ -42,7 +44,6 @@ public class NaverMemberController {
 	
 	@Autowired
 	NaverMemberService naverMemberService;
-	
 
 	@RequestMapping("/login/naverLogin")
 	public String naverLogin(HttpSession session) throws UnsupportedEncodingException, UnknownHostException
@@ -74,7 +75,7 @@ public class NaverMemberController {
 		JsonNode naverUser = naverInfo.get("response");
 		
 		if(naverUser!=null) {
-		System.out.println("이것은 정보"+naverUser.toString());
+		System.out.println(naverUser.toString());
 		
 		JsonNode naverIdNode = naverUser.get("id");
 		if(naverIdNode != null) {
@@ -85,17 +86,10 @@ public class NaverMemberController {
 		String naver_mobile = naverUser.get("mobile").asText();
 		String naver_name = naverUser.get("name").asText();
 		
-		//System.out.println("이것은 닉네임"+nickname);
-		//System.out.println("이것은 이메일"+email);
-		//System.out.println("이것은 연락처"+mobile);
-		//System.out.println("이것은 이름"+name);
-		
 		Map<String, Integer> map = new HashMap<>();
 		
 		int n = naverMemberService.getSearchNaverId("naver_"+naver_nickname);
 		map.put("count", n);
-		System.out.println("네이버아뒤~~  "+naver_id);
-		System.out.println("이것은숫자!!!!!"+n);
 		
 		if(n==1){
 			session.setAttribute("info_nickname", naver_nickname);
@@ -106,8 +100,8 @@ public class NaverMemberController {
 			session.setAttribute("loginok","naver");
 			
 			String loggedNaverId = (String)session.getAttribute("info_id");
-			MemberDto loggedInMember = naverMemberService.getDataByNaverId(loggedNaverId);
-			System.out.println("로그인중 네이버아이디!@@@@   "+loggedNaverId);
+		//	MemberDto loggedInMember = naverMemberService.getDataByNaverId(loggedNaverId);
+		//	System.out.println(loggedNaverId);
 			}else if(n==0)
 		{
 		  //System.out.println("네이버아이디: "+naver_nickname);
@@ -154,5 +148,5 @@ public class NaverMemberController {
 		}
 		return "redirect:/";
 	}
-	
+
 	}

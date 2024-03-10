@@ -5,8 +5,6 @@ server:
 #jsp - yml에서는 앞에가 같으면 띄어서 적어짐
 
 
-
-
 spring:
   #밑에 #한 3가지 설정해줬기 때문에 안씀
   #mvc:
@@ -16,8 +14,6 @@ spring:
   devtools:
     livereload:
       enabled: true
-
-
 #mysql
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -33,3 +29,5 @@ mybatis:
   mapper-locations:
   - /mapper/**/*.xml
   
+ 
+

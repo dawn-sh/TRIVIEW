@@ -251,9 +251,10 @@ else{
 					SecureRandom random = new SecureRandom();
 					String state = new BigInteger(130, random).toString();
 					%>
-					<a href="/login/naverLogin">
+				   	<a href="/login/naverLogin">
 					<img alt="" src="../loginsave/naver.png" style="cursor: pointer; width:145px;height:40px;">
 					</a>
+					
 					</div>
 					</div>
 				</td>

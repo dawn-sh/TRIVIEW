@@ -2,6 +2,8 @@ package sist.last.service;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -28,7 +31,7 @@ public class NaverMemberService implements NaverMemberServiceInter {
 
 	@Autowired
 	MemberMapperInter memberMapperInter;
-	
+
 	@Override
 	public String getAccessToken(String authorization_code, String state) {
 		
@@ -76,7 +79,7 @@ public class NaverMemberService implements NaverMemberServiceInter {
 		final HttpPost post = new HttpPost(reqUrl);
 		String accessToken = getAccessToken(authorization_code, state);
 		
-		System.out.println("이것은 accessToken!!!!  "+accessToken);
+	//	System.out.println(accessToken);
 		
 		post.addHeader("Authorization", "Bearer "+accessToken);
 		
